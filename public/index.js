@@ -82,20 +82,24 @@ var App = function (_React$Component) {
                             'form',
                             { onSubmit: this.submitHandler },
                             React.createElement(
-                                'label',
-                                { 'for': 'url-input' },
-                                'URL:'
+                                'div',
+                                { className: 'input' },
+                                React.createElement(
+                                    'label',
+                                    { 'for': 'url-input' },
+                                    'URL:'
+                                ),
+                                React.createElement('input', {
+                                    className: 'form-control',
+                                    type: 'text',
+                                    name: 'url',
+                                    value: this.state.url,
+                                    placeholder: 'Enter a valid URL...',
+                                    onChange: this.changeHandler })
                             ),
-                            React.createElement('input', {
-                                id: 'url_input',
-                                type: 'text',
-                                name: 'url',
-                                value: this.state.url,
-                                placeholder: 'Enter a valid URL...',
-                                onChange: this.changeHandler }),
                             React.createElement(
                                 'button',
-                                { className: 'btn btn-outline-light', type: 'submit' },
+                                { className: 'btn btn-outline-light submit', type: 'submit' },
                                 'Submit'
                             )
                         ),
@@ -113,7 +117,7 @@ var App = function (_React$Component) {
                             React.createElement('input', {
                                 id: 'res',
                                 type: 'text',
-                                className: 'url-container' //change domain name for netlify
+                                className: 'form-control' //change domain name for netlify
                                 , value: this.state.short_url })
                         )
                     )

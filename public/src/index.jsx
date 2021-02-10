@@ -52,17 +52,19 @@ class App extends React.Component {
                 <div className="container-md">
                     <div className="inner-container">
                         <form onSubmit={this.submitHandler}>
+                            <div className="input">
                             <label for="url-input">
                                 URL: 
                             </label>
                             <input 
-                                id="url_input" 
+                                className="form-control"
                                 type="text" 
                                 name="url" 
                                 value={this.state.url} 
                                 placeholder="Enter a valid URL..."
                                 onChange={this.changeHandler}/>
-                            <button className="btn btn-outline-light" type="submit">
+                            </div>
+                            <button className="btn btn-outline-light submit" type="submit">
                                 Submit
                             </button>
                         </form>
@@ -76,7 +78,7 @@ class App extends React.Component {
                             <input 
                                 id="res"
                                 type="text" 
-                                className="url-container" //change domain name for netlify
+                                className="form-control" //change domain name for netlify
                                 value={this.state.short_url}/>  
                         </div>
                     </div>
