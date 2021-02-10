@@ -49,7 +49,7 @@ class App extends React.Component {
                 <h1>
                     Shorten your URL!
                 </h1>
-                <div className="container-sm">
+                <div className="container-md">
                     <div className="inner-container">
                         <form onSubmit={this.submitHandler}>
                             <label for="url-input">

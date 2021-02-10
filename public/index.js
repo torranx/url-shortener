@@ -74,7 +74,7 @@ var App = function (_React$Component) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'container-sm' },
+                    { className: 'container-md' },
                     React.createElement(
                         'div',
                         { className: 'inner-container' },
