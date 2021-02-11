@@ -49,6 +49,7 @@ var App = function (_React$Component) {
         _this.submitHandler = _this.submitHandler.bind(_this);
         _this.changeHandler = _this.changeHandler.bind(_this);
         _this.handleClick = _this.handleClick.bind(_this);
+        _this.handleCopy = _this.handleCopy.bind(_this);
         return _this;
     }
 
@@ -56,7 +57,8 @@ var App = function (_React$Component) {
         key: 'handleClick',
         value: function handleClick() {
             var input = document.getElementById('res');
-            if (this.state.error == null) {
+            var inputVal = input.value;
+            if (this.state.error == null && inputVal.length != 0) {
                 input.focus();
                 input.select();
                 document.execCommand('copy');
@@ -64,6 +66,13 @@ var App = function (_React$Component) {
                     copy: 'Copied!'
                 });
             }
+        }
+    }, {
+        key: 'handleCopy',
+        value: function handleCopy() {
+            this.setState({
+                copy: 'Copy URL'
+            });
         }
     }, {
         key: 'render',
@@ -103,7 +112,11 @@ var App = function (_React$Component) {
                             ),
                             React.createElement(
                                 'button',
-                                { className: 'btn btn-outline-light submit', type: 'submit' },
+                                {
+                                    onClick: this.handleCopy,
+                                    className: 'btn btn-outline-light submit',
+                                    type: 'submit'
+                                },
                                 'Submit'
                             )
                         ),
@@ -121,8 +134,8 @@ var App = function (_React$Component) {
                             React.createElement('input', {
                                 id: 'res',
                                 type: 'text',
-                                className: 'form-control' //change domain name for netlify
-                                , value: this.state.error != null ? this.state.error : this.state.short_url })
+                                className: 'form-control',
+                                value: this.state.error != null ? this.state.error : this.state.short_url })
                         )
                     )
                 )

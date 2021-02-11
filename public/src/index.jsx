@@ -10,6 +10,7 @@ class App extends React.Component {
         this.submitHandler = this.submitHandler.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleCopy = this.handleCopy.bind(this);
     }
     
     changeHandler = (e) => {
@@ -37,7 +38,8 @@ class App extends React.Component {
 
     handleClick() {
         let input = document.getElementById('res');
-        if (this.state.error == null) {
+        let inputVal = input.value;
+        if (this.state.error == null && inputVal.length != 0) {
             input.focus();
             input.select();
             document.execCommand('copy');
@@ -45,6 +47,12 @@ class App extends React.Component {
                 copy: 'Copied!'
             })
         }
+    }
+
+    handleCopy() {
+        this.setState({
+            copy: 'Copy URL'
+        })
     }
 
     render() {
@@ -68,7 +76,11 @@ class App extends React.Component {
                                 placeholder="Enter a valid URL..."
                                 onChange={this.changeHandler}/>
                             </div>
-                            <button className="btn btn-outline-light submit" type="submit">
+                            <button 
+                                onClick={this.handleCopy}
+                                className="btn btn-outline-light submit" 
+                                type="submit"
+                            >
                                 Submit
                             </button>
                         </form>
@@ -81,8 +93,8 @@ class App extends React.Component {
                             </button>
                             <input 
                                 id="res"
-                                type="text" 
-                                className="form-control" //change domain name for netlify
+                                type="text"
+                                className="form-control" 
                                 value={
                                     this.state.error != null 
                                     ? this.state.error
