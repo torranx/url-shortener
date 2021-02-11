@@ -22,10 +22,11 @@ h1 {
 
 .container-md {
     background-color: #4d648d;
-    height: 40vh;
+    min-height: 1;
     padding: 2%;
     border-radius: .5rem;
     border: 2px solid white;
+    overflow: auto;
 }
 
 .inner-container {
@@ -41,22 +42,24 @@ form {
     font-size: 22px;
     display: flex;
     width: 100%;
-    justify-content: center;
+    height: 100%;
+    justify-content: space-evenly;
     align-items: center;
-    height: 15%;
+    margin: 5% 0 2%;
 }
 
 .input {
     display: flex;
-    height: 100%;
     width: 100%;
 }
 
 .result-container {
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2% 0 5%;
 }
 
 .form-control {
@@ -65,6 +68,7 @@ form {
 
 #res {
     background-color: #d0e1f9;
+    color:#283655;
 }
 
 .copy {

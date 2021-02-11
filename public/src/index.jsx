@@ -4,6 +4,7 @@ class App extends React.Component {
         this.state ={
             url: '', //property name to coincide with input name
             short_url: '',
+            error: null,
             copy: 'Copy URL'
         }
         this.submitHandler = this.submitHandler.bind(this);
@@ -28,19 +29,22 @@ class App extends React.Component {
         })
         .then(res => res.json())
         .then(data => this.setState({
-            short_url: data.short_url
+            short_url: 'https://url-dwarf.herokuapp.com/' + data.short_url,
+            error: data.error
         }))
         .catch(err => console.log(err))
     }
 
     handleClick() {
         let input = document.getElementById('res');
-        input.focus();
-        input.select();
-        document.execCommand('copy');
-        this.setState({
-            copy: 'Copied!'
-        })
+        if (this.state.error == null) {
+            input.focus();
+            input.select();
+            document.execCommand('copy');
+            this.setState({
+                copy: 'Copied!'
+            })
+        }
     }
 
     render() {
@@ -79,7 +83,11 @@ class App extends React.Component {
                                 id="res"
                                 type="text" 
                                 className="form-control" //change domain name for netlify
-                                value={this.state.short_url}/>  
+                                value={
+                                    this.state.error != null 
+                                    ? this.state.error
+                                    : this.state.short_url
+                                }/>  
                         </div>
                     </div>
                 </div>

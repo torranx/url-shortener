@@ -67,11 +67,15 @@ module.exports = (app) => {
                 if (data.length > 0) {
                     res.redirect(data[0].original_url)
                 } else {
-                    res.json({
-                        error: 'No short URL found for the given input'
-                    })
+                    res.send('No short URL found for the given input')
                 }
             }
         })
-    })
+    });
+
+    app.use((req, res, next) => {
+        res.status(404)
+          .type('text')
+          .send('Not Found');
+    });
 }

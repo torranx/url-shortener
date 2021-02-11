@@ -32,7 +32,8 @@ var App = function (_React$Component) {
                 return res.json();
             }).then(function (data) {
                 return _this.setState({
-                    short_url: data.short_url
+                    short_url: 'https://url-dwarf.herokuapp.com/' + data.short_url,
+                    error: data.error
                 });
             }).catch(function (err) {
                 return console.log(err);
@@ -42,6 +43,7 @@ var App = function (_React$Component) {
         _this.state = {
             url: '', //property name to coincide with input name
             short_url: '',
+            error: null,
             copy: 'Copy URL'
         };
         _this.submitHandler = _this.submitHandler.bind(_this);
@@ -54,12 +56,14 @@ var App = function (_React$Component) {
         key: 'handleClick',
         value: function handleClick() {
             var input = document.getElementById('res');
-            input.focus();
-            input.select();
-            document.execCommand('copy');
-            this.setState({
-                copy: 'Copied!'
-            });
+            if (this.state.error == null) {
+                input.focus();
+                input.select();
+                document.execCommand('copy');
+                this.setState({
+                    copy: 'Copied!'
+                });
+            }
         }
     }, {
         key: 'render',
@@ -118,7 +122,7 @@ var App = function (_React$Component) {
                                 id: 'res',
                                 type: 'text',
                                 className: 'form-control' //change domain name for netlify
-                                , value: this.state.short_url })
+                                , value: this.state.error != null ? this.state.error : this.state.short_url })
                         )
                     )
                 )
