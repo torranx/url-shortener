@@ -30,7 +30,7 @@ class App extends React.Component {
         })
         .then(res => res.json())
         .then(data => this.setState({
-            short_url: 'https://url-dwarf.herokuapp.com/' + data.short_url,
+            short_url: 'https://weefyurl.herokuapp.com/' + data.short_url,
             error: data.error
         }))
         .catch(err => console.log(err))
