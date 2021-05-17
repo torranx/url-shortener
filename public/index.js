@@ -32,7 +32,7 @@ var App = function (_React$Component) {
                 return res.json();
             }).then(function (data) {
                 return _this.setState({
-                    short_url: 'https://url-dwarf.herokuapp.com/' + data.short_url,
+                    short_url: 'https://weefyurl.herokuapp.com/' + data.short_url,
                     error: data.error
                 });
             }).catch(function (err) {
